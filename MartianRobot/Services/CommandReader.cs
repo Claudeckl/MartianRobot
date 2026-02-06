@@ -6,7 +6,7 @@ namespace MartianRobot.Services
 {
     public class CommandReader
     {
-        public static IRobotCommand ReadCommand(string c) => c switch
+        public IRobotCommand ReadCommand(string c) => c switch
         {
             "L" => new LeftCommand(),
             "R" => new RightCommand(),
@@ -14,7 +14,7 @@ namespace MartianRobot.Services
             _ => throw new ArgumentException($"Unknown command: {c}")
         };
 
-        public static Orientation ParseOrientation(string value)
+        public Orientation ParseOrientation(string value)
             => Enum.Parse<Orientation>(value);
     }
 }
