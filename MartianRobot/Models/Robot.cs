@@ -5,9 +5,9 @@ namespace MartianRobot.Models;
 
 public class Robot
 {
-    public Position Position { get; set; }
-    public Orientation Orientation { get; set; }
-    public bool IsLost { get; set; }
+    public Position Position { get; private set; }
+    public Orientation Orientation { get; private set; }
+    public bool IsLost { get; private set; }
 
     private readonly Grid _grid;
 
