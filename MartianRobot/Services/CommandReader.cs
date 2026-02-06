@@ -2,19 +2,18 @@
 using MartianRobot.Commands.Interfaces;
 using MartianRobot.Models.Enums;
 
-namespace MartianRobot.Services
-{
-    public class CommandReader
-    {
-        public IRobotCommand ReadCommand(string c) => c switch
-        {
-            "L" => new LeftCommand(),
-            "R" => new RightCommand(),
-            "F" => new ForwardCommand(),
-            _ => throw new ArgumentException($"Unknown command: {c}")
-        };
+namespace MartianRobot.Services;
 
-        public Orientation ParseOrientation(string value)
-            => Enum.Parse<Orientation>(value);
-    }
+public static class CommandReader
+{
+    public static IRobotCommand ReadCommand(char c) => c switch
+    {
+        'L' => new LeftCommand(),
+        'R' => new RightCommand(),
+        'F' => new ForwardCommand(),
+        _ => throw new ArgumentException($"Unknown command: {c}")
+    };
+
+    public static Orientation ParseOrientation(string value)
+        => Enum.Parse<Orientation>(value);
 }
